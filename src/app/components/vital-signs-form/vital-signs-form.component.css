@@ -1,0 +1,94 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+}
+fieldset {
+  margin-bottom: 10px;
+}
+
+.vital-signs-form {
+  flex: 1;
+  margin-right: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.vital-signs-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.vital-signs-form input[type="text"],
+.vital-signs-form input[type="date"],
+.vital-signs-form input[type="time"],
+.vital-signs-form input[type="number"],
+.vital-signs-form select,
+.vital-signs-form textarea {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.vital-signs-form input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.vital-signs-form button[type="submit"]:hover {
+  background-color: #0b7dda;
+}
+
+.vital-signs-form button[type="submit"]:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+.vital-signs-form button[type="submit"] {
+  background-color: #2196f3;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.vital-signs-form select {
+  appearance: none;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 4px;
+}
+.name {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  justify-content: flex-start;
+}
+.name label {
+  margin-right: 2px;
+  padding: 4px;
+}
+
+.dateTime {
+  display: flex;
+  justify-content: flex-start;
+}
+.date {
+  margin-right: 10px;
+}
+
+.values {
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.values p {
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 16px;
+}
