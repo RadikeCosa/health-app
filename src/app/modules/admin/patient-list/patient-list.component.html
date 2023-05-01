@@ -1,0 +1,13 @@
+<div>
+  <h2>Pacientes:</h2>
+  <div *ngFor="let patient of patients">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ patient.name }} {{ patient.lastName }}</h5>
+        <button class="btn btn-danger" (click)="deletePatient(patient.id)">
+          Eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
