@@ -1,0 +1,85 @@
+<form [formGroup]="reportForm" (ngSubmit)="onSubmit()">
+  <label>
+    Nombre:
+    <input type="text" formControlName="name" />
+  </label>
+  <label>
+    Fecha:
+    <input type="date" formControlName="date" />
+  </label>
+  <label>
+    Hora:
+    <input type="time" formControlName="hour" />
+  </label>
+  <br />
+  <label>
+    Frecuencia Cardiaca:
+    <input type="number" formControlName="hr" />
+  </label>
+  <label>
+    Frecuencia Respiratoria:
+    <input type="number" formControlName="br" />
+  </label>
+  <br />
+  <label>
+    Presión Arterial:
+    <input type="number" placeholder="sistólica" formControlName="bpSystolic" />
+    <span>/</span>
+    <input
+      type="number"
+      placeholder="diastólica"
+      formControlName="bpDiastolic"
+    />
+  </label>
+  <br />
+  <label>
+    Sat 02:
+    <input type="number" formControlName="o2" />
+  </label>
+  <label>
+    Glucosa:
+    <input type="number" formControlName="glucose" />
+  </label>
+  <br />
+  <label>
+    Catarsis:
+    <input type="checkbox" formControlName="bowel" />
+  </label>
+
+  <label>
+    Diuresis:
+    <input type="checkbox" formControlName="urine" />
+  </label>
+  <br />
+  <label>
+    reporte:
+    <textarea formControlName="report"></textarea>
+  </label>
+  <br />
+  <label>
+    indications:
+    <input formControlName="indications" />
+  </label>
+  <br />
+  <label>
+    Firma:
+    <input formControlName="sign" />
+  </label>
+  <br />
+  <button type="submit" [disabled]="!reportForm.valid">Enviar</button>
+</form>
+<div class="check">
+  Nombre: {{ reportForm.value.name | json }} Fecha:
+  {{ reportForm.value.date | json }} Hora:
+  {{ reportForm.value.hour | json }} Frecuencia Cardiaca:
+  {{ reportForm.value.hr | json }} Frecuencia Respiratoria:
+  {{ reportForm.value.br | json }} Presion:
+  {{ reportForm.value.bpSystolic | json }} /
+  {{ reportForm.value.bpDiastolic | json }}
+  Oxigeno: {{ reportForm.value.o2 | json }} Diuresis
+  {{ reportForm.value.urine | json }} Catarsis:
+  {{ reportForm.value.bowel | json }} Reporte:
+  {{ reportForm.value.report | json }} Indicaciones:
+  {{ reportForm.value.indications | json }} Firma:
+  {{ reportForm.value.sign | json }}
+</div>

@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './modules/material.module';
 import { AdminModule } from './modules/admin/admin.module';
 import { SharedModule } from './modules/shared/shared.module';
+import { TeamModule } from './modules/team/team.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,6 +14,8 @@ import { SharedModule } from './modules/shared/shared.module';
     AppRoutingModule,
     MaterialModule,
     AdminModule,
+    TeamModule,
+
     SharedModule,
   ],
   providers: [],
