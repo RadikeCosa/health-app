@@ -6,7 +6,7 @@ import { IPatient } from 'src/app/models/ipatient';
   providedIn: 'root',
 })
 export class PatientService {
-  apiUrl = 'https://healthapi-awns.onrender.com/api/v1';
+  apiUrl = 'http://localhost:8080/api/v1';
   constructor(private http: HttpClient) {}
 
   getPatients(): Observable<IPatient[]> {

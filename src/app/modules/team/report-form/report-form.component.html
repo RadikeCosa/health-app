@@ -1,85 +1,175 @@
-<form [formGroup]="reportForm" (ngSubmit)="onSubmit()">
-  <label>
-    Nombre:
-    <input type="text" formControlName="name" />
-  </label>
-  <label>
-    Fecha:
-    <input type="date" formControlName="date" />
-  </label>
-  <label>
-    Hora:
-    <input type="time" formControlName="hour" />
-  </label>
-  <br />
-  <label>
-    Frecuencia Cardiaca:
-    <input type="number" formControlName="hr" />
-  </label>
-  <label>
-    Frecuencia Respiratoria:
-    <input type="number" formControlName="br" />
-  </label>
-  <br />
-  <label>
-    Presión Arterial:
-    <input type="number" placeholder="sistólica" formControlName="bpSystolic" />
-    <span>/</span>
-    <input
-      type="number"
-      placeholder="diastólica"
-      formControlName="bpDiastolic"
-    />
-  </label>
-  <br />
-  <label>
-    Sat 02:
-    <input type="number" formControlName="o2" />
-  </label>
-  <label>
-    Glucosa:
-    <input type="number" formControlName="glucose" />
-  </label>
-  <br />
-  <label>
-    Catarsis:
-    <input type="checkbox" formControlName="bowel" />
-  </label>
+<div class="form-container">
+  <form [formGroup]="reportForm" (ngSubmit)="onSubmit()">
+    <legend><h2>Reporte de Visita</h2></legend>
+    <fieldset>
+      <div class="patient">
+        <label> Pacientes </label>
+        <select title="patient" formControlName="name" *ngIf="patients">
+          <option>None</option>
+          <option *ngFor="let patient of patients" [value]="patient.name">
+            {{ patient.name }} {{ patient.lastName }}
+          </option>
+        </select>
+      </div>
+      <div class="datetime">
+        <label>
+          Fecha:
+          <input type="date" formControlName="date" />
+        </label>
+        <label>
+          Hora:
+          <input type="time" formControlName="hour" />
+        </label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend class="vital-signs">Signos Vitales</legend>
+      <div class="hr">
+        <label>
+          Frecuencia Cardiaca:
+          <input type="number" formControlName="hr" />
+        </label>
+      </div>
+      <div class="temp">
+        <label>
+          Temperatura
+          <input type="number" formControlName="temp" />
+        </label>
+      </div>
+      <div class="rr">
+        <label>
+          Frecuencia Respiratoria:
+          <input type="number" formControlName="rr" />
+        </label>
+      </div>
+      <div class="bp">
+        <label>
+          Presión Arterial:
+          <input
+            type="number"
+            placeholder="sistólica"
+            formControlName="bpSystolic"
+          />
+          <span>/</span>
+          <input
+            type="number"
+            placeholder="diastólica"
+            formControlName="bpDiastolic"
+          />
+        </label>
+      </div>
+      <div class="o2">
+        <label>
+          Sat 02:
+          <input type="number" formControlName="o2" />
+        </label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Other</legend>
+      <div class="glucose">
+        <label>
+          Glucosa:
+          <input type="number" formControlName="glucose" />
+        </label>
+      </div>
+      <div class="bowelUrine">
+        <label>
+          Catarsis:
+          <input type="checkbox" formControlName="bowel" />
+        </label>
 
-  <label>
-    Diuresis:
-    <input type="checkbox" formControlName="urine" />
-  </label>
-  <br />
-  <label>
-    reporte:
-    <textarea formControlName="report"></textarea>
-  </label>
-  <br />
-  <label>
-    indications:
-    <input formControlName="indications" />
-  </label>
-  <br />
-  <label>
-    Firma:
-    <input formControlName="sign" />
-  </label>
-  <br />
-  <button type="submit" [disabled]="!reportForm.valid">Enviar</button>
-</form>
+        <label>
+          Diuresis:
+          <input type="checkbox" formControlName="urine" />
+        </label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Reporte</legend>
+      <div class="report">
+        <label>
+          reporte:
+          <textarea formControlName="report"></textarea>
+        </label>
+      </div>
+      <div class="indications">
+        <label>
+          indications:
+          <input type="text" formControlName="indications" />
+        </label>
+      </div>
+      <div class="signature">
+        <label>
+          Firma:
+          <input type="text" formControlName="signature" />
+        </label>
+      </div>
+    </fieldset>
+    <div class="btn">
+      <button type="submit" [disabled]="!reportForm.valid">Enviar</button>
+    </div>
+  </form>
+</div>
 <div class="check">
-  Nombre: {{ reportForm.value.name | json }} Fecha:
-  {{ reportForm.value.date | json }} Hora:
-  {{ reportForm.value.hour | json }} Frecuencia Cardiaca:
-  {{ reportForm.value.hr | json }} Frecuencia Respiratoria:
-  {{ reportForm.value.br | json }} Presion:
-  {{ reportForm.value.bpSystolic | json }} /
-  {{ reportForm.value.bpDiastolic | json }}
-  Oxigeno: {{ reportForm.value.o2 | json }} Diuresis
-  {{ reportForm.value.urine | json }} Catarsis:
-  {{ reportForm.value.bowel | json }} Reporte:
-  {{ reportForm.value.report | json }} Indicaciones:
-  {{ reportForm.value.indications | json }} Firma:
-  {{ reportForm.value.sign | json }}
+  <div class="item">
+    <span class="label">Nombre:</span>
+    <span class="value">{{ reportForm.value.name }}</span>
+  </div>
+  <div class="item">
+    <span class="label">Fecha:</span>
+    <span class="value">{{ reportForm.value.date | date }}</span>
+  </div>
+  <div class="item">
+    <span class="label">Hora:</span>
+    <span class="value">{{ reportForm.value.hour }}</span>
+  </div>
+  <div class="item">
+    <span class="label">Frecuencia Cardiaca:</span>
+    <span class="value">{{ reportForm.value.hr }}</span>
+  </div>
+  <div class="item">
+    <span class="label">Frecuencia Respiratoria:</span>
+    <span class="value">{{ reportForm.value.rr }}</span>
+  </div>
+  <div class="item">
+    <span class="label">Temperatura:</span>
+    <span class="value">{{ reportForm.value.temp }}</span>
+  </div>
+  <div class="item">
+    <span class="label">Presion:</span>
+    <span class="value"
+      >{{ reportForm.value.bpSystolic }}/{{
+        reportForm.value.bpDiastolic
+      }}</span
+    >
+  </div>
+  <div class="item">
+    <span class="label">Oxigeno:</span>
+    <span class="value">{{ reportForm.value.o2 }}</span>
+  </div>
+  <div class="item">
+    <span class="label">Diuresis:</span>
+    <span class="value">{{ reportForm.value.urine }}</span>
+  </div>
+  <div class="item">
+    <span class="label">Glucosa:</span>
+    <span class="value">{{ reportForm.value.glucose }}</span>
+  </div>
+  <div class="item">
+    <span class="label">Catarsis:</span>
+    <span class="value">{{ reportForm.value.bowel }}</span>
+  </div>
+  <div class="item">
+    <span class="label">Reporte:</span>
+    <span class="value">{{ reportForm.value.report }}</span>
+  </div>
+  <div class="item">
+    <span class="label">Indicaciones:</span>
+    <span class="value">{{ reportForm.value.indications }}</span>
+  </div>
+  <div class="item">
+    <span class="label">Firma:</span>
+    <span class="value">{{ reportForm.value.signature }}</span>
+  </div>
 </div>
